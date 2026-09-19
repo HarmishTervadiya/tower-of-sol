@@ -1,0 +1,67 @@
+# Tower of Sol — monorepo root ignore
+# App-level ignores live in mobile/.gitignore (Expo-owned). This file covers
+# everything else: secrets, future backend/program builds, OS/IDE noise.
+
+# --- secrets: never commit real env files (examples are committed instead) ---
+.env
+.env*.local
+!.env.example
+**/.env
+**/.env*.local
+!**/.env.example
+credentials.json
+eas.json
+google-services.json
+GoogleService-Info.plist
+*.jks
+*.keystore
+*.p8
+*.p12
+*.key
+*.pem
+*.mobileprovision
+
+# --- dependencies & builds ---
+node_modules/
+dist/
+build/
+web-build/
+coverage/
+*.tsbuildinfo
+
+# --- Expo / EAS ---
+.expo/
+.eas/
+*.apk
+*.aab
+*.ipa
+
+# --- future: Express backend (server/) ---
+server/dist/
+server/logs/
+*.log
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+pnpm-debug.*
+
+# --- future: Anchor program (program/) ---
+program/target/
+program/test-ledger/
+program/.anchor/
+.anchor/
+
+# --- native build outputs (if we ever prebuild) ---
+ios/
+android/
+*.orig.*
+.kotlin/
+
+# --- OS / IDE ---
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo

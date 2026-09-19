@@ -1,0 +1,9 @@
+# Enforce LF line endings in the repo; native line endings on checkout.
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.ttf binary
+*.otf binary
+*.apk binary
+*.aab binary
