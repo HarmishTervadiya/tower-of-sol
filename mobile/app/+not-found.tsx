@@ -1,6 +1,6 @@
 import { Link, Stack } from 'expo-router';
 import { Text, View } from 'react-native';
-import { colors, spacing, typeScale } from '@/src/theme/tokens';
+import { colors, spacing, typography } from '@/src/theme';
 
 export default function NotFoundScreen() {
   return (
@@ -16,9 +16,9 @@ export default function NotFoundScreen() {
           gap: spacing.sm,
         }}
       >
-        <Text style={[typeScale.h1, { color: colors.ink }]}>This floor doesn&apos;t exist.</Text>
+        <Text style={[typography.h1, { color: colors.ink }]}>This floor doesn&apos;t exist.</Text>
         <Link href="/(tabs)" style={{ marginTop: spacing.sm }}>
-          <Text style={[typeScale.body, { color: colors.gold }]}>Return to the Tower</Text>
+          <Text style={[typography.body, { color: colors.gold }]}>Return to the Tower</Text>
         </Link>
       </View>
     </>

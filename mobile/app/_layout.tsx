@@ -4,8 +4,10 @@ import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { StatusBar } from 'expo-status-bar';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import 'react-native-reanimated';
 import { queryClient } from '@/src/lib/query-client';
+import { colors } from '@/src/theme';
 
 export { ErrorBoundary } from 'expo-router';
 
@@ -27,14 +29,16 @@ export default function RootLayout() {
   if (!loaded) return null;
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <StatusBar style="light" />
-      <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: '#0B0B16' } }}>
-        <Stack.Screen name="(tabs)" />
-        <Stack.Screen name="realm/[id]" options={{ presentation: 'card' }} />
-        <Stack.Screen name="trial/[trialId]" options={{ presentation: 'card' }} />
-        <Stack.Screen name="onboarding" options={{ presentation: 'modal' }} />
-      </Stack>
-    </QueryClientProvider>
+    <GestureHandlerRootView style={{ flex: 1, backgroundColor: colors.void }}>
+      <QueryClientProvider client={queryClient}>
+        <StatusBar style="light" />
+        <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: colors.void } }}>
+          <Stack.Screen name="(tabs)" />
+          <Stack.Screen name="realm/[id]" options={{ presentation: 'card' }} />
+          <Stack.Screen name="trial/[trialId]" options={{ presentation: 'card' }} />
+          <Stack.Screen name="onboarding" options={{ presentation: 'modal' }} />
+        </Stack>
+      </QueryClientProvider>
+    </GestureHandlerRootView>
   );
 }

@@ -1,4 +1,5 @@
 import type { Realm } from '@/src/features/game/types';
+import { colors } from '@/src/theme';
 
 export const REALMS: Realm[] = [
   {
@@ -6,7 +7,7 @@ export const REALMS: Realm[] = [
     name: 'Shadows',
     epithet: 'Realm I — Privacy',
     tagline: 'Read the tell. Strike before the veil lifts.',
-    accent: '#7C5CFF',
+    accent: colors.violet,
     status: 'live',
     guardian: { name: 'Veilwarden', title: 'Guardian of Shadows', heldSince: '2d 4h', timeWeight: 1.4 },
     xp: 1240,
@@ -53,7 +54,7 @@ export const REALMS: Realm[] = [
     name: 'Flow',
     epithet: 'Realm II — Tokens',
     tagline: 'Find the best route before slippage finds you.',
-    accent: '#3DDC97',
+    accent: colors.jade,
     status: 'sealed',
     guardian: { name: 'Unclaimed', title: 'Awaiting Guardian', heldSince: '—', timeWeight: 1.0 },
     xp: 0,
@@ -78,7 +79,7 @@ export const REALMS: Realm[] = [
     name: 'Artifacts',
     epithet: 'Realm III — Relics',
     tagline: 'Separate the real from the counterfeit.',
-    accent: '#E8B44A',
+    accent: colors.gold,
     status: 'sealed',
     guardian: { name: 'Unclaimed', title: 'Awaiting Guardian', heldSince: '—', timeWeight: 1.0 },
     xp: 0,

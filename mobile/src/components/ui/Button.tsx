@@ -1,5 +1,5 @@
 import { Pressable, Text, type StyleProp, type ViewStyle } from 'react-native';
-import { colors, radius, spacing, typeScale } from '@/src/theme/tokens';
+import { colors, motion, radii, spacing, typography } from '@/src/theme';
 import { tap } from '@/src/lib/haptics';
 
 type Variant = 'primary' | 'ghost' | 'danger';
@@ -30,21 +30,21 @@ export function Button({
       style={({ pressed }) => [
         {
           backgroundColor: bg,
-          borderRadius: radius.md,
+          borderRadius: radii.md,
           paddingVertical: spacing.md,
           paddingHorizontal: spacing.lg,
           alignItems: 'center',
           borderWidth: variant === 'ghost' ? 1 : 0,
           borderColor: colors.line,
-          opacity: disabled ? 0.45 : pressed ? 0.85 : 1,
+          opacity: disabled ? 0.45 : pressed ? motion.press.opacity : 1,
         },
         style,
       ]}
     >
       <Text
         style={[
-          typeScale.label,
-          { color: variant === 'primary' ? '#1A1206' : variant === 'danger' ? '#fff' : colors.ink },
+          typography.label,
+          { color: variant === 'primary' ? colors.inkOnGold : variant === 'danger' ? colors.white : colors.ink },
         ]}
       >
         {title.toUpperCase()}

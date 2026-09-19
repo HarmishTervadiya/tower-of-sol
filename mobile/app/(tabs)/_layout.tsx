@@ -1,6 +1,6 @@
 import { Tabs } from 'expo-router';
 import { TowerControl, Layers, Sparkles } from 'lucide-react-native';
-import { colors } from '@/src/theme/tokens';
+import { colors } from '@/src/theme';
 
 export default function TabLayout() {
   return (

@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import { View, type StyleProp, type ViewStyle } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { colors, radius, spacing } from '@/src/theme/tokens';
+import { colors, radii, spacing } from '@/src/theme';
 
 export function Card({
   children,
@@ -17,7 +17,7 @@ export function Card({
       style={[
         {
           backgroundColor: colors.surface,
-          borderRadius: radius.lg,
+          borderRadius: radii.lg,
           borderWidth: 1,
           borderColor: colors.line,
           padding: spacing.lg,

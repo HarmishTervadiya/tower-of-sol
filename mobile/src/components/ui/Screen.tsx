@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import { ScrollView, type StyleProp, type ViewStyle } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { colors, spacing } from '@/src/theme/tokens';
+import { colors, spacing } from '@/src/theme';
 
 export function Screen({
   children,
