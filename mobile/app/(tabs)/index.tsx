@@ -40,7 +40,8 @@ export default function TowerScreen() {
         <Text style={[typography.h1, { color: colors.ink }]}>{current.name}</Text>
         <Text style={[typography.body, { color: colors.dim }]}>{current.tagline}</Text>
         <Text style={[typography.caption, { color: colors.faint }]}>
-          Guardian: {current.guardian.name} · {current.guardian.title} · held {current.guardian.heldSince}
+          Guardian: {current.guardian.name} · {current.guardian.title} · held{' '}
+          {current.guardian.heldSince}
         </Text>
         <ProgressBar value={xp} max={current.xpThreshold} accent={current.accent} />
         <Text style={[typography.caption, { color: colors.dim }]}>
@@ -48,7 +49,11 @@ export default function TowerScreen() {
         </Text>
         <Button title="Enter Realm" onPress={() => router.push(`/realm/${current.id}`)} />
         <Link href={`/trial/${current.trials[0]?.id ?? 'shadow-match'}`} asChild>
-          <Button title="Begin Trial" variant="ghost" onPress={() => router.push(`/trial/${current.trials[0]?.id ?? 'shadow-match'}`)} />
+          <Button
+            title="Begin Trial"
+            variant="ghost"
+            onPress={() => router.push(`/trial/${current.trials[0]?.id ?? 'shadow-match'}`)}
+          />
         </Link>
       </Card>
 
@@ -66,7 +71,11 @@ export default function TowerScreen() {
       ))}
 
       <View style={{ flexDirection: 'row', gap: 8 }}>
-        <Button title="How Guardians work" variant="ghost" onPress={() => router.push('/realm/shadows')} />
+        <Button
+          title="How Guardians work"
+          variant="ghost"
+          onPress={() => router.push('/realm/shadows')}
+        />
       </View>
     </Screen>
   );

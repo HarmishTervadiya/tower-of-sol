@@ -26,12 +26,15 @@ import { scheduleOnRN } from 'react-native-worklets';
 
 const translateY = useSharedValue(0);
 const pan = Gesture.Pan()
-  .onUpdate((e) => { translateY.set(e.translationY); })   // UI thread, no setState
+  .onUpdate((e) => {
+    translateY.set(e.translationY);
+  }) // UI thread, no setState
   .onEnd((e) => {
-    const commit = Math.abs(e.velocityY) > motion.thresholds.flickVelocity
-      || Math.abs(e.translationY) > motion.thresholds.commitDistance;
-    if (commit) scheduleOnRN(onCommit)();                  // RN once, at the end
-    translateY.set(withSpring(0, motion.springs.finger));  // velocity-preserving snap-back
+    const commit =
+      Math.abs(e.velocityY) > motion.thresholds.flickVelocity ||
+      Math.abs(e.translationY) > motion.thresholds.commitDistance;
+    if (commit) scheduleOnRN(onCommit)(); // RN once, at the end
+    translateY.set(withSpring(0, motion.springs.finger)); // velocity-preserving snap-back
   });
 ```
 

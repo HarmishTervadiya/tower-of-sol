@@ -22,9 +22,37 @@ app/+not-found.tsx         → deep-link safety
 type RealmId = 'shadows' | 'flow' | 'artifacts';
 type RoundPhase = 'glance' | 'probe' | 'commit' | 'resolve';
 type Confidence = 'low' | 'med' | 'high';
-interface Realm { id; name; tagline; accent; guardian; xp; xpThreshold; bypass; trials: Trial[] }
-interface Trial { id; realmId; title; kind; prompt; options; answerIndex; signal; probeSignal }
-interface RoundState { phase; trial; focus: 100; confidence; probeUsed; correct?; payout? }
+interface Realm {
+  id;
+  name;
+  tagline;
+  accent;
+  guardian;
+  xp;
+  xpThreshold;
+  bypass;
+  trials: Trial[];
+}
+interface Trial {
+  id;
+  realmId;
+  title;
+  kind;
+  prompt;
+  options;
+  answerIndex;
+  signal;
+  probeSignal;
+}
+interface RoundState {
+  phase;
+  trial;
+  focus: 100;
+  confidence;
+  probeUsed;
+  correct?;
+  payout?;
+}
 ```
 
 Payout curve (open item in outline — v1 locked here, tunable):

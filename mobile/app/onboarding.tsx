@@ -15,16 +15,16 @@ export default function OnboardingScreen() {
       <Badge label="SESSION 1 · ZERO STAKES" tone="gold" />
       <Text style={[typography.display, { color: colors.ink }]}>Climb with training wheels</Text>
       <Text style={[typography.body, { color: colors.dim }]}>
-        Tower → Shadows (suggested) → practice round → first real round → XP/Shard feedback.
-        Realm switching, Premium shop and Expeditions unlock over later sessions.
+        Tower → Shadows (suggested) → practice round → first real round → XP/Shard feedback. Realm
+        switching, Premium shop and Expeditions unlock over later sessions.
       </Text>
       <Card accent={colors.violet}>
         <Text style={[typography.body, { color: colors.ink, fontWeight: '700' }]}>
           Practice: Match the Actor
         </Text>
         <Text style={[typography.caption, { color: colors.dim }]}>
-          Glance the signal, optionally Probe, Commit Low/Med/High, Resolve. Zero stakes — learn
-          the rhythm.
+          Glance the signal, optionally Probe, Commit Low/Med/High, Resolve. Zero stakes — learn the
+          rhythm.
         </Text>
         <Button
           title="Start practice round"
@@ -33,10 +33,14 @@ export default function OnboardingScreen() {
             router.replace('/trial/shadow-match');
           }}
         />
-        <Button title="Skip to Tower" variant="ghost" onPress={() => {
-          complete();
-          router.replace('/(tabs)');
-        }} />
+        <Button
+          title="Skip to Tower"
+          variant="ghost"
+          onPress={() => {
+            complete();
+            router.replace('/(tabs)');
+          }}
+        />
       </Card>
     </Screen>
   );

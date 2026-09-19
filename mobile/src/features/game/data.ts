@@ -9,7 +9,12 @@ export const REALMS: Realm[] = [
     tagline: 'Read the tell. Strike before the veil lifts.',
     accent: colors.violet,
     status: 'live',
-    guardian: { name: 'Veilwarden', title: 'Guardian of Shadows', heldSince: '2d 4h', timeWeight: 1.4 },
+    guardian: {
+      name: 'Veilwarden',
+      title: 'Guardian of Shadows',
+      heldSince: '2d 4h',
+      timeWeight: 1.4,
+    },
     xp: 1240,
     xpThreshold: 2000,
     bypass: 'Detect 3 behavioral tells in a row to bypass the trial gate.',
@@ -19,7 +24,8 @@ export const REALMS: Realm[] = [
         realmId: 'shadows',
         title: 'Match the Actor',
         kind: 'Glance trial',
-        prompt: 'Three actors move through the dark. One hesitates before every door. Who is the infiltrator?',
+        prompt:
+          'Three actors move through the dark. One hesitates before every door. Who is the infiltrator?',
         options: ['The First', 'The Second', 'The Third'],
         answerIndex: 1,
         signal: 'Timing spread: 0.4s / 1.9s / 0.5s — the Second lingers.',

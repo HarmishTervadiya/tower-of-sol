@@ -121,7 +121,8 @@ export default function TrialScreen() {
                   }}
                   style={{
                     borderWidth: 1,
-                    borderColor: revealed && isAnswer ? colors.jade : active ? colors.gold : colors.line,
+                    borderColor:
+                      revealed && isAnswer ? colors.jade : active ? colors.gold : colors.line,
                     backgroundColor: active ? colors.goldDeep : colors.surface2,
                     borderRadius: radii.md,
                     padding: spacing.md,
@@ -151,7 +152,9 @@ export default function TrialScreen() {
                   backgroundColor: confidence === c.id ? colors.goldDeep : 'transparent',
                 }}
               >
-                <Text style={[typography.body, { color: colors.ink, fontWeight: '700' }]}>{c.label}</Text>
+                <Text style={[typography.body, { color: colors.ink, fontWeight: '700' }]}>
+                  {c.label}
+                </Text>
                 <Text style={[typography.caption, { color: colors.dim }]}>{c.hint}</Text>
               </Pressable>
             ))}

@@ -44,7 +44,14 @@ export function Button({
       <Text
         style={[
           typography.label,
-          { color: variant === 'primary' ? colors.inkOnGold : variant === 'danger' ? colors.white : colors.ink },
+          {
+            color:
+              variant === 'primary'
+                ? colors.inkOnGold
+                : variant === 'danger'
+                  ? colors.white
+                  : colors.ink,
+          },
         ]}
       >
         {title.toUpperCase()}

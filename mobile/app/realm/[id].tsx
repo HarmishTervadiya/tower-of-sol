@@ -35,8 +35,8 @@ export default function RealmDetailScreen() {
           {realm.guardian.timeWeight}
         </Text>
         <Text style={[typography.caption, { color: colors.faint }]}>
-          First to clear the contested event becomes Guardian and sets the active trial.
-          Transcend pays the outgoing Guardian a time-weighted bonus.
+          First to clear the contested event becomes Guardian and sets the active trial. Transcend
+          pays the outgoing Guardian a time-weighted bonus.
         </Text>
       </Card>
 

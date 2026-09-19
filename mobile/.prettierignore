@@ -1,0 +1,9 @@
+# Prettier never formats these (build output, generated, vendored).
+.expo/
+dist/
+web-build/
+coverage/
+node_modules/
+package-lock.json
+brag-output/
+*.min.js

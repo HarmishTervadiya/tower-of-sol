@@ -19,16 +19,16 @@
 
 ## Skill routing
 
-| Task | Skill | When |
-| ---- | ----- | ---- |
-| General RN implementation (state, services, boundaries, testing) | *(this file)* | Default. No specialty skill needed |
-| UI/component implementation | *(this file) + `src/theme`* | Compose theme tokens; visual contract in `docs/UI-REFERENCES.md` |
-| Animation | `mobile-animation` | Anything animated; motion stutter; entering/exiting; press/progress/state transitions |
-| Gesture/touch interaction | `gesture-interaction` | Taps, swipes, pans, drags, sheets, swipe-to-climb, gestures not firing |
-| Performance optimization | `motion-performance` | Jank, profiling, animation PR review, particles/effects affordability, Skia question |
-| Promotional/demo/launch video | `brag` | `/brag`, demo/promo/trailer asks, Tier-1 teaser, submission cut. Dev-time only — never APK code |
-| Backend (Express) | *reserved* | Phase 3 only. Do not build |
-| Anchor/Solana programs | *reserved* | Phase 4 only. Do not build |
+| Task                                                             | Skill                       | When                                                                                            |
+| ---------------------------------------------------------------- | --------------------------- | ----------------------------------------------------------------------------------------------- |
+| General RN implementation (state, services, boundaries, testing) | _(this file)_               | Default. No specialty skill needed                                                              |
+| UI/component implementation                                      | _(this file) + `src/theme`_ | Compose theme tokens; visual contract in `docs/UI-REFERENCES.md`                                |
+| Animation                                                        | `mobile-animation`          | Anything animated; motion stutter; entering/exiting; press/progress/state transitions           |
+| Gesture/touch interaction                                        | `gesture-interaction`       | Taps, swipes, pans, drags, sheets, swipe-to-climb, gestures not firing                          |
+| Performance optimization                                         | `motion-performance`        | Jank, profiling, animation PR review, particles/effects affordability, Skia question            |
+| Promotional/demo/launch video                                    | `brag`                      | `/brag`, demo/promo/trailer asks, Tier-1 teaser, submission cut. Dev-time only — never APK code |
+| Backend (Express)                                                | _reserved_                  | Phase 3 only. Do not build                                                                      |
+| Anchor/Solana programs                                           | _reserved_                  | Phase 4 only. Do not build                                                                      |
 
 Invoke a skill only when it materially applies. `brag` never overlaps runtime skills:
 video work produces `brag-output/` (gitignored), never app code.
@@ -39,12 +39,18 @@ Every action is evaluated against the routing table before anything else:
 
 1. **No silent skips.** Before any meaningful action, determine whether a skill applies.
    If one exists, load/invoke it first — never bypass it because the task looks small.
+   Loading means reading the skill file (`mobile/skills/<name>/SKILL.md`) before acting,
+   not merely naming it.
 2. **Multiple skills → combine in order.** Apply each skill's rules without violating any
    other. Order: domain skill (animation/gesture) → performance → this file's boundaries.
 3. **Missing skill → name the gap.** If work needs guidance no skill covers, create or
    update the skill first when practical, then proceed under it.
 4. **Validate against the skill before finishing.** Re-check the skill's rules and gates
    after implementing, not just before.
+5. **Report skills used, every action.** End every response that performed work with a
+   `Skills used:` line listing each skill loaded (or `this file` for default rules) —
+   and, when no specialty skill applied, one clause stating why none did. No report,
+   no done.
 
 ## TypeScript (Total TypeScript / Pocock)
 
@@ -60,6 +66,8 @@ Every action is evaluated against the routing table before anything else:
 app/              → Expo Router routes only. Thin: load state, handle nav. No fetch, no MMKV.
 src/features/<f>/ → types.ts, data.ts (mock), store.ts (zustand), hooks/, components/
 src/components/ui/→ dumb themed primitives (Button, Card, Screen, Badge, ProgressBar…)
+src/components/game/→ layered game primitives (background, panel, text, button, glow,
+                    progress, ring, rarity, reward, sigil). Compose, don't restyle.
 src/services/     → GameService interface + mockGameService. Screens NEVER import fetch.
 src/lib/          → query-client, storage, haptics, result type. No UI.
 src/theme/        → THE visual source of truth (colors, typography, spacing, radii,
@@ -91,6 +99,7 @@ mobile/skills/    → agent skills (dev-time guidance). Never imported by app co
 ## Quality gates
 
 - `npm run type-check` must pass. `npx expo-doctor@latest` must pass
+- `npm run format:check` must pass — run `npm run format` before pushing (`prettier.config.js` owns style)
 - New feature logic gets a pure-function unit test (payout curve, XP math, state machine)
 - Animation PRs carry the motion-performance device checklist results
 - Update project docs (`docs/`, skill files) when behavior, tokens, or workflows change

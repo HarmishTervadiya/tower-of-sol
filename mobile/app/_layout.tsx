@@ -1,4 +1,5 @@
 import { useFonts } from 'expo-font';
+import { Cinzel_700Bold } from '@expo-google-fonts/cinzel';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
@@ -16,6 +17,7 @@ SplashScreen.preventAutoHideAsync();
 export default function RootLayout() {
   const [loaded, error] = useFonts({
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
+    Cinzel_700Bold,
   });
 
   useEffect(() => {
@@ -32,7 +34,9 @@ export default function RootLayout() {
     <GestureHandlerRootView style={{ flex: 1, backgroundColor: colors.void }}>
       <QueryClientProvider client={queryClient}>
         <StatusBar style="light" />
-        <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: colors.void } }}>
+        <Stack
+          screenOptions={{ headerShown: false, contentStyle: { backgroundColor: colors.void } }}
+        >
           <Stack.Screen name="(tabs)" />
           <Stack.Screen name="realm/[id]" options={{ presentation: 'card' }} />
           <Stack.Screen name="trial/[trialId]" options={{ presentation: 'card' }} />

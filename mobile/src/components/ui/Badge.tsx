@@ -1,8 +1,15 @@
 import { Text, View } from 'react-native';
 import { colors, radii, spacing, typography } from '@/src/theme';
 
-export function Badge({ label, tone = 'gold' }: { label: string; tone?: 'gold' | 'violet' | 'dim' }) {
-  const bg = tone === 'gold' ? colors.goldDeep : tone === 'violet' ? colors.violetDeep : colors.surface2;
+export function Badge({
+  label,
+  tone = 'gold',
+}: {
+  label: string;
+  tone?: 'gold' | 'violet' | 'dim';
+}) {
+  const bg =
+    tone === 'gold' ? colors.goldDeep : tone === 'violet' ? colors.violetDeep : colors.surface2;
   const fg = tone === 'gold' ? colors.goldSoft : tone === 'violet' ? colors.violetSoft : colors.dim;
   return (
     <View

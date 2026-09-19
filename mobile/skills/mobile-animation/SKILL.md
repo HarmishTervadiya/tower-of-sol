@@ -38,7 +38,7 @@ the Tower-specific binding.
 - `runOnJS` is removed → use `scheduleOnRN` from `react-native-worklets`, and only in
   `onEnd` or a threshold-crossing `useAnimatedReaction` — never per frame in `onUpdate`.
 - `useAnimatedGestureHandler` is removed → use the `Gesture` API (see gesture-interaction).
-- `withSpring` v4: `duration` is now *perceptual* (actual ≈ 1.5×); thresholds replaced by
+- `withSpring` v4: `duration` is now _perceptual_ (actual ≈ 1.5×); thresholds replaced by
   single `energyThreshold`. Prefer `theme.motion.springs` presets over inline configs.
 - No `babel.config.js` in this repo by design: `babel-preset-expo` already includes the
   Worklets plugin on SDK 57. Add one only when customizing the pipeline.
@@ -54,7 +54,7 @@ Never `Easing.in(...)` on UI, never `scale(0)` entrances. Defaults live in `them
 ```tsx
 import { useReducedMotion, FadeIn } from 'react-native-reanimated';
 const reduced = useReducedMotion();
-<Animated.View entering={reduced ? FadeIn.duration(80) : motion.entering.rise()} />
+<Animated.View entering={reduced ? FadeIn.duration(80) : motion.entering.rise()} />;
 ```
 
 ## Lifecycle / cleanup

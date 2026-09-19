@@ -5,8 +5,10 @@ export type TapKind = 'light' | 'medium' | 'success' | 'error';
 
 export async function tap(kind: TapKind): Promise<void> {
   try {
-    if (kind === 'success') await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
-    else if (kind === 'error') await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
+    if (kind === 'success')
+      await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+    else if (kind === 'error')
+      await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
     else if (kind === 'medium') await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     else await Haptics.selectionAsync();
   } catch {

@@ -22,12 +22,16 @@ export default function RealmsScreen() {
           onPress={() => router.push(`/realm/${r.id}`)}
         >
           <Card accent={r.accent}>
-            <Badge label={r.status === 'live' ? 'LIVE' : 'SEALED · PREVIEW'} tone={r.status === 'live' ? 'gold' : 'dim'} />
+            <Badge
+              label={r.status === 'live' ? 'LIVE' : 'SEALED · PREVIEW'}
+              tone={r.status === 'live' ? 'gold' : 'dim'}
+            />
             <Text style={[typography.h1, { color: colors.ink }]}>{r.name}</Text>
             <Text style={[typography.caption, { color: colors.faint }]}>{r.epithet}</Text>
             <Text style={[typography.body, { color: colors.dim }]}>{r.tagline}</Text>
             <Text style={[typography.caption, { color: colors.dim }]}>
-              {r.trials.length} trial{r.trials.length === 1 ? '' : 's'} · Guardian: {r.guardian.name}
+              {r.trials.length} trial{r.trials.length === 1 ? '' : 's'} · Guardian:{' '}
+              {r.guardian.name}
             </Text>
           </Card>
         </Pressable>
