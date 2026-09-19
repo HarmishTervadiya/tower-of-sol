@@ -5,16 +5,16 @@ Greenfield Expo SDK 57 app. Phases 3 (Express) and 4 (Anchor) are NOT built — 
 ## Route map (Expo Router)
 
 ```
-app/_layout.tsx            → providers: Query, Theme, ErrorBoundary, splash, onboarding gate
-app/(tabs)/_layout.tsx     → Tower | Realms | Journey tabs
-app/(tabs)/index.tsx       → Tower overview (current Realm, Guardian, transcend progress)
-app/(tabs)/realms.tsx      → Realm list (Shadows live, Flow/Artifacts preview)
-app/(tabs)/journey.tsx     → XP, Shards/Crystals, level, Guardian rewards
-app/realm/[id].tsx         → Realm detail: Guardian, trials, bypass, contribute CTA
-app/trial/[trialId].tsx    → Round loop: Glance → Probe → Commit → Resolve
-app/onboarding.tsx         → zero-stakes practice round → first real round
+app/_layout.tsx            → providers: Query, GestureHandlerRootView, fonts, StatusBar
+app/index.tsx              → SCREEN 1: cinematic title card (holds; onward routes land incrementally)
+app/playground.tsx         → DEV ONLY (__DEV__-guarded): theme/primitive validation lab
 app/+not-found.tsx         → deep-link safety
 ```
+
+> Removed in the Screen 1 milestone: the early `(tabs)` / `realm/[id]` /
+> `trial/[trialId]` / `onboarding` placeholders. Screens now land incrementally
+> from the ui-ref contract, built on the theme/primitive system. The game domain
+> (`src/features/game`: types, data, payout, store) is retained as infrastructure.
 
 ## Domain model
 

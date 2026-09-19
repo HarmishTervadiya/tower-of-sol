@@ -17,7 +17,7 @@ export default function NotFoundScreen() {
         }}
       >
         <Text style={[typography.h1, { color: colors.ink }]}>This floor doesn&apos;t exist.</Text>
-        <Link href="/(tabs)" style={{ marginTop: spacing.sm }}>
+        <Link href="/" style={{ marginTop: spacing.sm }}>
           <Text style={[typography.body, { color: colors.gold }]}>Return to the Tower</Text>
         </Link>
       </View>

@@ -35,7 +35,7 @@ const RARITIES: Rarity[] = ['common', 'uncommon', 'rare', 'epic', 'legendary'];
 export default function PlaygroundScreen() {
   const reduced = useReducedMotion();
   const [realm, setRealm] = useState<RealmThemeKey>('shadows');
-  if (!__DEV__) return <Redirect href="/(tabs)" />;
+  if (!__DEV__) return <Redirect href="/" />;
 
   const rt = resolveRealmTheme(realm);
   const enter = (i: number) => (reduced ? FadeIn.duration(80) : motion.entering.rise(i * 60));

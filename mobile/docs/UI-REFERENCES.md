@@ -14,6 +14,16 @@ monoliths. Title card: **WORLD TOWER / THE TOWER IS AWAKE.** Timestamp implies a
   transcend/Guardian moments); splash must feel like a trailer frame, not a loader.
 - Motion: slow push-in (cinematic duration tier), halo fade-in, title rise.
   Reduced-motion: static frame, no push-in.
+- Asset requirement (open): full-bleed illustrated tower key art. Interim:
+  `assets/images/key-art/splash-still.jpg` (frame @5s of the gemini clip,
+  404x720 — soft stretched fullscreen, used dimmed under scrims). A clean
+  timestamp-free screen1 export (or higher-res still) swaps in with zero code
+  churn. The `0:00–0:04` timestamp is storyboard chrome and is never rendered.
+- Motion reference: `gemini_generated_video_cf3630c1.mp4` (10s awakening) defines
+  the splash beats — continuous push-in → wisps gather ~2s → lightning converges
+  ~3s → halo ignites ~4s → ring stabilizes/pulses → hold. Implemented in
+  `app/index.tsx` on a compressed 8s timeline via `theme.motion.sequence.splash`;
+  timing windows are tokens, not inline constants.
 
 ## screen2 — Entry / onboarding
 
@@ -116,38 +126,3 @@ This frame is a video storyboard, not app UI.
 
 - Mandates: feeds the `brag` skill's submission cut (hook → meta loop → punchline),
   never implemented as a screen.
-
-## screen1 — Cinematic splash (0:00–0:04)
-
-Dark obsidian tower rising through storm clouds, glowing blue halo ring, floating
-monoliths. Title card: **WORLD TOWER / THE TOWER IS AWAKE.** Timestamp implies a
-4-second cinematic beat.
-
-- Mandates: cold blue + gold palette on near-black; halo-ring motif (reuse for
-  transcend/Guardian moments); splash must feel like a trailer frame, not a loader.
-- Motion: slow push-in (cinematic duration tier), halo fade-in, title rise.
-  Reduced-motion: static frame, no push-in.
-
-## screen2 — Entry / onboarding
-
-Same tower art, climber silhouette on rubble foreground. Copy:
-**THE TOWER IS AWAKE. YOUR ASCENSION BEGINS.** Gold-outlined **ENTER** button.
-
-- Mandates: onboarding opens on this beat (Session 1: Tower → Shadows); ENTER is the
-  single CTA — press feedback (`motion.press`) + `commit` haptic + native transition.
-- This is the practice-round gateway: ENTER → zero-stakes round → first real round.
-
-## screen3 — Tower climb (signature interaction)
-
-Vertical floor stack: avatar + **Lv. 07** + XP bar top-left, crystal count top-right,
-circular floor platforms (**FLOOR 01 ORDER**, **FLOOR 02 FLOW**, **FLOOR 03 WEALTH**
-highlighted gold with Guardian avatar badge, **FLOOR 04 ???** locked). Bottom:
-**SWIPE TO CLIMB** with chevrons.
-
-- Mandates: the Tower screen is a **vertical swipe-to-climb** interaction, not a
-  scroll list — pan gesture, snap to nearest floor (`springs.finger`), parallax floor
-  cards, haptic on floor change, gold highlight + Guardian badge on the live floor,
-  locked floors dimmed (`state.locked`), live floor pulsing (`state.live`).
-- HUD: level + XP progress animate on change (transform/opacity); crystal count ticks.
-- Guardian badge and floor icons are shared-element candidates when pushing
-  `realm/[id]` (only if measurable — native transition first).

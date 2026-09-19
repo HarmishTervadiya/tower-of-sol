@@ -1,5 +1,6 @@
 import { useFonts } from 'expo-font';
 import { Cinzel_700Bold } from '@expo-google-fonts/cinzel';
+import { NavigationBar } from 'expo-navigation-bar';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
@@ -32,15 +33,15 @@ export default function RootLayout() {
 
   return (
     <GestureHandlerRootView style={{ flex: 1, backgroundColor: colors.void }}>
+      {/* Edge-to-edge: app draws behind the system bars on void; light buttons. */}
+      <NavigationBar style="dark" />
       <QueryClientProvider client={queryClient}>
         <StatusBar style="light" />
         <Stack
           screenOptions={{ headerShown: false, contentStyle: { backgroundColor: colors.void } }}
         >
-          <Stack.Screen name="(tabs)" />
-          <Stack.Screen name="realm/[id]" options={{ presentation: 'card' }} />
-          <Stack.Screen name="trial/[trialId]" options={{ presentation: 'card' }} />
-          <Stack.Screen name="onboarding" options={{ presentation: 'modal' }} />
+          <Stack.Screen name="index" options={{ animation: 'fade' }} />
+          <Stack.Screen name="playground" options={{ animation: 'fade' }} />
         </Stack>
       </QueryClientProvider>
     </GestureHandlerRootView>

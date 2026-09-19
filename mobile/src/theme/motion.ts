@@ -25,6 +25,25 @@ export const easings = {
   linear: Easing.linear,
 } as const;
 
+/**
+ * Splash awakening sequence — beats mapped from ui-ref/gemini video
+ * (10s push-in, wisps ~2s, strike ~3s, ring ignite ~4s, stabilize + hold).
+ * Timeline `t` runs 0→1 over `pushMs`; windows are fractions of `t`.
+ */
+export const sequence = {
+  splash: {
+    pushMs: 8000,
+    pushScale: 1.06,
+    titlesDelayMs: 700,
+    wisp: { in: [0.2, 0.24, 0.28, 0.34], opacity: [0, 0.9, 0.3, 0] },
+    strike: { in: [0.3, 0.34, 0.37, 0.42, 0.46], opacity: [0, 1, 0.25, 1, 0] },
+    ringIgnite: { in: [0.4, 0.55], opacity: [0, 1] },
+    flash: { in: [0.3, 0.36, 0.46], opacity: [0, 0.4, 0] },
+    ringPulseDelayMs: 4400,
+    ringPulseMs: 1600,
+  },
+} as const;
+
 export const springs = {
   /** Default for gesture-driven motion. */
   finger: { damping: 22, stiffness: 260 },
@@ -85,4 +104,5 @@ export const motion = {
   press,
   thresholds,
   hapticMap,
+  sequence,
 } as const;
